@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SamiGorselOdevi3.NotesPage"
+             Title="Yapılacaklar"
+             BackgroundColor="#22435f">
+
+    <ScrollView Padding="20">
+        <StackLayout Spacing="15">
+            <Label Text="Yapılacaklar" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#000000" />
+
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Tarih:" VerticalOptions="Center" WidthRequest="50" />
+                <DatePicker x:Name="datePicker" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Saat:" VerticalOptions="Center" WidthRequest="50" />
+                <TimePicker x:Name="timePicker" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+
+            <StackLayout Spacing="5">
+                <Label Text="Not:" FontAttributes="Bold" />
+                <Editor x:Name="noteEditor" HeightRequest="150" Placeholder="Notunuzu buraya yazın..." Margin="0,5,0,15" BackgroundColor="#556a59" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Spacing="15" HorizontalOptions="Center">
+                <Button Text="Kaydet" BackgroundColor="Black" TextColor="White" WidthRequest="80" Clicked="OnSaveClicked"/>
+                <Button Text="Düzenle" BackgroundColor="Black" TextColor="White" WidthRequest="80" Clicked="OnEditClicked"/>
+                <Button Text="Sil" BackgroundColor="Black" TextColor="White" WidthRequest="80" Clicked="OnDeleteClicked"/>
+            </StackLayout>
+
+            <ListView x:Name="notesListView" ItemSelected="OnNoteSelected" Margin="0,15,0,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Note}" Detail="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}" TextColor="#000000" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
